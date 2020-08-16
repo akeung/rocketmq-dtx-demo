@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ak.demo.order.mapper.TxMapper" >
+    <resultMap id="BaseResultMap" type="com.ak.demo.order.entity.TxInfo" >
+        <id column="xid" property="xid" jdbcType="INTEGER" />
+        <result column="created_at" property="created" jdbcType="BIGINT" />
+    </resultMap>
+
+    <insert id="insert">
+        INSERT INTO `tx_table`(`xid`,`created_at`,`status`) VALUES(#{xid},#{created},#{status});
+    </insert>
+    <select id="exists" resultType="boolean">
+        SELECT COUNT(1) FROM tx_table WHERE xid=#{xid};
+    </select>
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT `xid`,`created_at`,`status` FROM tx_table WHERE xid=#{xid};
+    </select>
+</mapper>

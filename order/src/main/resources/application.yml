@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: order
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.71.128:3306/rocketmq_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+server:
+  port: 8081
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+mybatis-plus:
+  type-aliases-package: com.ak.demo.sdorder.entity
+  mapper-locations:
+    - classpath:/mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com.ak.demo.order.mapper: DEBUG
+
+ribbon:
+  ReadTimeout: 10000
+
+rocketmq:
+  name-server: 192.168.71.128:9876
+  producer:
+    group: order-group
+
