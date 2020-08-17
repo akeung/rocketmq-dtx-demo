@@ -2,8 +2,6 @@ package com.ak.demo.order.service;
 
 import com.ak.demo.entities.TxAccountMessage;
 import com.ak.demo.order.entity.Order;
-import com.ak.demo.order.feign.AccountClient;
-import com.ak.demo.order.feign.StorageClient;
 import com.ak.demo.order.mapper.OrderMapper;
 import com.ak.demo.utils.IdGenerator;
 import com.ak.demo.utils.JsonUtil;
@@ -24,10 +22,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Resource
     private OrderMapper orderMapper;
-    @Autowired
-    private AccountClient accountClient;
-    @Autowired
-    private StorageClient storageClient;
     @Autowired
     private RocketMQTemplate rocketMQTemplate;
 
